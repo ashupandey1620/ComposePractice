@@ -22,25 +22,40 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePracticeTheme {
-                Box (modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.7f)),
-                    contentAlignment = Alignment.Center
 
-                ){
-
-                    MyCustomCard(Modifier.fillMaxWidth(fraction = 0.8f),
-                        image = R.drawable.whitecar ,
-                        title = "white Car"  ,
-                        text = "This is a white Car, which is very good in terms of servicing and Engine. it has a top speed of 240 km/hr and it can reach 0-100 km/h in just 6 seconds. It costs around 2 Billion dollars" ,
-                        publisher = Publisher(
-                            name = "Ashutosh Pandey",
-                            job = "Android Developer",
-                            image = R.drawable.user))
-
-                }
             }
         }
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                Box (modifier = Modifier
+//                    .fillMaxSize()
+//                    .background(Color.Black.copy(alpha = 0.7f)),
+//                    contentAlignment = Alignment.Center
+//
+//                ){
+//
+//                    MyCustomCard(Modifier.fillMaxWidth(fraction = 0.8f),
+//                        image = R.drawable.whitecar ,
+//                        title = "white Car"  ,
+//                        text = "This is a white Car, which is very good in terms of servicing and Engine. it has a top speed of 240 km/hr and it can reach 0-100 km/h in just 6 seconds. It costs around 2 Billion dollars" ,
+//                        publisher = Publisher(
+//                            name = "Ashutosh Pandey",
+//                            job = "Android Developer",
+//                            image = R.drawable.user))
+//
+//                }
