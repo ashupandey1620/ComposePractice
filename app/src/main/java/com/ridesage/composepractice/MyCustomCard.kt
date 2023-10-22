@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -135,3 +137,39 @@ fun MyCustomCard(
         }
     }
 }
+
+
+
+
+//Column(modifier = Modifier
+//.fillMaxSize()
+//.background(MaterialTheme.colorScheme.surface),
+//verticalArrangement = Arrangement.Center,
+//horizontalAlignment = Alignment.CenterHorizontally
+//)
+//{
+//    AnimatedBorderCard(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(all = 24.dp),
+//        shape = RoundedCornerShape(8.dp) ,
+//        onCardClick = {},
+//        gradient = Brush.linearGradient(listOf(Color.Magenta, Color.Cyan))
+//
+//    ){
+//        Column(modifier = Modifier.padding(all=24.dp)) {
+//
+//            Text(text = "Ashutosh",
+//                fontWeight = FontWeight.Bold,
+//                fontSize = MaterialTheme.typography.displaySmall.fontSize)
+//
+//            Spacer(modifier =Modifier.height(15.dp) )
+//
+//            Text(text = "Hello EveryOne, My Name is Ashutosh Pandey. My Name is Ashutosh Pandey. My Name is Ashutosh Pandey. My Name is Ashutosh Pandey. My Name is Ashutosh Pandey",
+//                fontWeight = FontWeight.Bold,
+//                fontSize = MaterialTheme.typography.bodyMedium.fontSize)
+//        }
+//
+//
+//    }
+//}
