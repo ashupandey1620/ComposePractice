@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposePracticeTheme {
-AnimatedBackground()
+            AnimatedBackground()
 
 
             }
