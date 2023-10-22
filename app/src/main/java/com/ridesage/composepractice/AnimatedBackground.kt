@@ -1,6 +1,7 @@
 package com.ridesage.composepractice
 
 
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.InfiniteTransition
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -12,12 +13,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,6 +39,7 @@ import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -48,6 +52,14 @@ fun AnimatedBackground()
     val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.android))
     val progress by animateLottieCompositionAsState(composition = composition.value,
         iterations = LottieConstants.IterateForever)
+
+    val infiniteTransition = rememberInfiniteTransition()
+    val color by infiniteTransition.animateColor(
+        initialValue = Color.Yellow ,
+        targetValue =  Color.Green,
+        animationSpec = infiniteRepeatable(animation = tween(durationMillis = 5000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse)
+    )
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -57,7 +69,8 @@ fun AnimatedBackground()
         Column(
             modifier = Modifier
                 .padding(bottom = 80.dp)
-                .padding(horizontal = 80.dp)
+                .padding(horizontal = 40.dp)
+
         ) {
             Text(modifier = Modifier.fillMaxWidth(),
                 text = "Ashutosh",
@@ -66,15 +79,16 @@ fun AnimatedBackground()
                 fontSize = MaterialTheme.typography.displayMedium.fontSize,
                 fontWeight = FontWeight.Bold)
             Text(modifier = Modifier.fillMaxWidth(),
-                text = "Ashutosh",
-                textAlign = TextAlign.Center,
+                text = "On this Dussehra, may you conquer your inner demons and emerge victorious in life",
+                textAlign = TextAlign.Start,
                 color = Color.White,
-                fontSize = MaterialTheme.typography.displaySmall.fontSize,
-                fontWeight = FontWeight.Bold)
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Medium)
             Spacer(modifier = Modifier.height(24.dp))
             Button(modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = color),
                 onClick = {},
                 shape = CircleShape
             ){
