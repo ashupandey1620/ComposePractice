@@ -1,5 +1,6 @@
 package com.ridesage.composepractice
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,7 +39,7 @@ Column (modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.Center){
 
 
-    if (visible) {
+    AnimatedVisibility(visible) {
         Image(
             modifier = Modifier
                 .size(150.dp)
