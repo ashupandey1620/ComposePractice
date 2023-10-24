@@ -1,6 +1,7 @@
 package com.ridesage.composepractice
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
@@ -45,7 +46,7 @@ Column (modifier = Modifier.fillMaxSize(),
 
 
     AnimatedVisibility(visible,
-        enter = slideInVertically() + fadeIn(),
+        enter = expandVertically() ,
         exit = slideOutHorizontally() + fadeOut()
     ) {
         Image(
