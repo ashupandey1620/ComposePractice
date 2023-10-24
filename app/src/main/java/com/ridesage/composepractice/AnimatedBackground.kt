@@ -9,6 +9,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,7 +51,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 fun AnimatedBackground()
 {
     val composition = rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.android))
-    val progress by animateLottieCompositionAsState(composition = composition.value,
+    val progress by animateLottieCompositionAsState(composition = composition.value, restartOnPlay = true,
         iterations = LottieConstants.IterateForever)
 
     val infiniteTransition = rememberInfiniteTransition()
@@ -62,10 +63,11 @@ fun AnimatedBackground()
     )
     Box(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(Color.Black),
         contentAlignment = Alignment.BottomCenter
     ) {
-        LottieAnimation(modifier = Modifier.fillMaxSize(),composition =composition.value  , progress = {progress})
+        LottieAnimation(modifier = Modifier.fillMaxSize() ,composition =composition.value  , progress = {progress})
         Column(
             modifier = Modifier
                 .padding(bottom = 80.dp)
@@ -73,10 +75,10 @@ fun AnimatedBackground()
 
         ) {
             Text(modifier = Modifier.fillMaxWidth(),
-                text = "Ashutosh",
+                text = "Happy Dussehra",
                 textAlign = TextAlign.Center,
                 color = Color.White,
-                fontSize = MaterialTheme.typography.displayMedium.fontSize,
+                fontSize = 27.sp,
                 fontWeight = FontWeight.Bold)
             Text(modifier = Modifier.fillMaxWidth(),
                 text = "On this Dussehra, may you conquer your inner demons and emerge victorious in life",
@@ -84,12 +86,23 @@ fun AnimatedBackground()
                 color = Color.White,
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Medium)
+
+
+            Text(modifier = Modifier.fillMaxWidth(),
+                text = "~Ashutosh Pandey",
+                textAlign = TextAlign.End,
+                color = Color.White,
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Medium)
+
             Spacer(modifier = Modifier.height(24.dp))
             Button(modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = color),
-                onClick = {},
+                onClick = {
+
+                },
                 shape = CircleShape
             ){
                 Text(text = "Click it",
