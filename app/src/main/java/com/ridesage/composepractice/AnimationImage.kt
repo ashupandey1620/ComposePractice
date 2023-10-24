@@ -3,6 +3,9 @@ package com.ridesage.composepractice
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -42,8 +45,8 @@ Column (modifier = Modifier.fillMaxSize(),
 
 
     AnimatedVisibility(visible,
-        enter = fadeIn(),
-        exit = fadeOut()
+        enter = slideInVertically() + fadeIn(),
+        exit = slideOutHorizontally() + fadeOut()
     ) {
         Image(
             modifier = Modifier
