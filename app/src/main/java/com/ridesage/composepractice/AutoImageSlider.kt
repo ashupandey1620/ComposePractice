@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,18 +31,21 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MyApplication(modifier: Modifier = Modifier) {
     val images = listOf(
         R.drawable.whitecar,
-        R.drawable.whitecar,
-        R.drawable.whitecar,
-        R.drawable.whitecar
+        R.drawable.busdriver,
+        R.drawable.yellowcar,
+        R.drawable.autodriver
     )
 
     val pagerState = rememberPagerState(pageCount = images.size)
+
+    val scope  = rememberCoroutineScope()
 
 
     LaunchedEffect(Unit){
@@ -52,6 +56,8 @@ fun MyApplication(modifier: Modifier = Modifier) {
             pagerState.scrollToPage(nextPage)
         }
     }
+
+
 
     Column(modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
@@ -74,11 +80,20 @@ fun MyApplication(modifier: Modifier = Modifier) {
 
             }
 
-            IconButton(onClick = {  },
-                 modifier.padding(30.dp)
-                     .size(48.dp)
-                     .align(Alignment.CenterEnd)
-                     .clip(CircleShape)) {
+            IconButton(onClick = {
+                val nextPage = pagerState.currentPage+1
+                if(nextPage<images.size)
+                {
+                    scope.launch {
+                        pagerState.scrollToPage(nextPage)
+                    }
+                }
+            },
+                modifier
+                    .padding(30.dp)
+                    .size(48.dp)
+                    .align(Alignment.CenterEnd)
+                    .clip(CircleShape)) {
 
                 Icon(imageVector = Icons.Filled.KeyboardArrowRight,contentDescription = "",
                     modifier.fillMaxSize(),
@@ -88,7 +103,8 @@ fun MyApplication(modifier: Modifier = Modifier) {
             }
 
             IconButton(onClick = {  },
-                modifier.padding(30.dp)
+                modifier
+                    .padding(30.dp)
                     .size(48.dp)
                     .align(Alignment.CenterStart)
                     .clip(CircleShape)) {
