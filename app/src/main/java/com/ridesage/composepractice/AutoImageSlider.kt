@@ -4,6 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
@@ -32,11 +34,11 @@ fun MyApplication(modifier: Modifier = Modifier) {
     Column(modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
-        Box(modifier = modifier.wrapContentSize()){
+        Box(modifier = modifier.fillMaxWidth()){
             HorizontalPager(state = pagerState,
                 modifier
                     .wrapContentSize()
-                    .padding(20.dp)) {currentPage->
+                    .padding(26.dp)) {currentPage->
 
                 Card(
                     modifier.wrapContentSize(),
