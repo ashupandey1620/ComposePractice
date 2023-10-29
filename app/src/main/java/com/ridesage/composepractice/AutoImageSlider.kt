@@ -17,6 +17,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
@@ -38,9 +39,9 @@ import kotlinx.coroutines.launch
 fun MyApplication(modifier: Modifier = Modifier) {
     val images = listOf(
         R.drawable.whitecar,
-        R.drawable.busdriver,
-        R.drawable.yellowcar,
-        R.drawable.autodriver
+        R.drawable.whitecar,
+        R.drawable.whitecar,
+        R.drawable.whitecar
     )
 
     val pagerState = rememberPagerState(pageCount = images.size)
@@ -93,7 +94,10 @@ fun MyApplication(modifier: Modifier = Modifier) {
                     .padding(30.dp)
                     .size(48.dp)
                     .align(Alignment.CenterEnd)
-                    .clip(CircleShape)) {
+                    .clip(CircleShape),
+                colors = IconButtonDefaults.iconButtonColors(
+                    containerColor = Color(0X52373737)
+                )) {
 
                 Icon(imageVector = Icons.Filled.KeyboardArrowRight,contentDescription = "",
                     modifier.fillMaxSize(),
@@ -113,7 +117,10 @@ fun MyApplication(modifier: Modifier = Modifier) {
                     .padding(30.dp)
                     .size(48.dp)
                     .align(Alignment.CenterStart)
-                    .clip(CircleShape)) {
+                    .clip(CircleShape),
+                colors = IconButtonDefaults.iconButtonColors(
+                    containerColor = Color(0X52373737)
+                )) {
 
                 Icon(imageVector = Icons.Filled.KeyboardArrowLeft,contentDescription = "",
                     modifier.fillMaxSize(),
