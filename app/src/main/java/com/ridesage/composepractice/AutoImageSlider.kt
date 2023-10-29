@@ -23,10 +23,10 @@ import com.google.accompanist.pager.rememberPagerState
 @Composable
 fun MyApplication(modifier: Modifier = Modifier) {
     val images = listOf(
-        R.drawable.yellowcar,
-        R.drawable.busdriver,
         R.drawable.whitecar,
-        R.drawable.autodriver
+        R.drawable.whitecar,
+        R.drawable.whitecar,
+        R.drawable.whitecar
     )
 
     val pagerState = rememberPagerState(pageCount = images.size)
@@ -34,14 +34,14 @@ fun MyApplication(modifier: Modifier = Modifier) {
     Column(modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
-        Box(modifier = modifier.fillMaxWidth()){
+        Box(modifier = modifier.wrapContentSize()){
             HorizontalPager(state = pagerState,
                 modifier
                     .wrapContentSize()
-                    .padding(26.dp)) {currentPage->
+                    ) {currentPage->
 
                 Card(
-                    modifier.wrapContentSize(),
+                    modifier.wrapContentSize().padding(26.dp),
                     elevation = CardDefaults.cardElevation(8.dp)
 
                 ) {
