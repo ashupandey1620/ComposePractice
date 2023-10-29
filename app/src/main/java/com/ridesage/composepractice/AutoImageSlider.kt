@@ -52,8 +52,7 @@ fun MyApplication(modifier: Modifier = Modifier) {
                     .wrapContentSize()
                     ) {currentPage->
 
-                Card(
-                    modifier
+                Card(modifier
                         .wrapContentSize()
                         .padding(26.dp),
                     elevation = CardDefaults.cardElevation(8.dp)
