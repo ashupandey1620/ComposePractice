@@ -34,7 +34,6 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.ridesage.composepractice.ui.theme.ComposePracticeTheme
 
 class MainActivity : ComponentActivity() {
-    var clickCount = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
