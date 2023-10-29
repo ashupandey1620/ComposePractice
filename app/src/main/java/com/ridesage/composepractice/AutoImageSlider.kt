@@ -102,7 +102,13 @@ fun MyApplication(modifier: Modifier = Modifier) {
 
             }
 
-            IconButton(onClick = {  },
+            IconButton(onClick = { val prevPage = pagerState.currentPage+1
+                if(prevPage>=0)
+                {
+                    scope.launch {
+                        pagerState.scrollToPage(prevPage)
+                    }
+                } },
                 modifier
                     .padding(30.dp)
                     .size(48.dp)
