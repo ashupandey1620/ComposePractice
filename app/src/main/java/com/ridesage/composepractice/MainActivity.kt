@@ -1,5 +1,6 @@
 package com.ridesage.composepractice
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,21 +34,28 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.ridesage.composepractice.ui.theme.ComposePracticeTheme
 
 class MainActivity : ComponentActivity() {
+    var clickCount = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             ComposePracticeTheme {
-//            AnimatedBackground()
-               AnimationImage()
 
+                Column {
+                    CircularElementAnimation(visible = true, delayMillis = 1000)
+                    TextAndButton(visible = true, delayMillis = 2000)
+                    Button(
+                        onClick = {
+                            buttonWidthState.value += 25.dp
+                        },
+                        text = "Button",
+                        modifier = Modifier.width(buttonWidthState.value)
+                    )
+                }
             }
         }
     }
 }
-
-
-
 
 
 
