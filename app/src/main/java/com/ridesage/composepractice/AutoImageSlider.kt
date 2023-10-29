@@ -80,7 +80,7 @@ fun MyApplication(modifier: Modifier = Modifier) {
                      .align(Alignment.CenterEnd)
                      .clip(CircleShape)) {
 
-                Icon(imageVector = Icons.Filled.KeyboardArrowLeft,contentDescription = "",
+                Icon(imageVector = Icons.Filled.KeyboardArrowRight,contentDescription = "",
                     modifier.fillMaxSize(),
                     tint = Color.LightGray)
 
@@ -93,7 +93,7 @@ fun MyApplication(modifier: Modifier = Modifier) {
                     .align(Alignment.CenterStart)
                     .clip(CircleShape)) {
 
-                Icon(imageVector = Icons.Filled.KeyboardArrowRight,contentDescription = "",
+                Icon(imageVector = Icons.Filled.KeyboardArrowLeft,contentDescription = "",
                     modifier.fillMaxSize(),
                     tint = Color.LightGray)
 
