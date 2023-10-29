@@ -41,17 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePracticeTheme {
 
-                Column {
-                    CircularElementAnimation(visible = true, delayMillis = 1000)
-                    TextAndButton(visible = true, delayMillis = 2000)
-                    Button(
-                        onClick = {
-                            buttonWidthState.value += 25.dp
-                        },
-                        text = "Button",
-                        modifier = Modifier.width(buttonWidthState.value)
-                    )
-                }
+
             }
         }
     }
