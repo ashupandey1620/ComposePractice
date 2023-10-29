@@ -1,8 +1,12 @@
 package com.ridesage.composepractice
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -129,5 +133,36 @@ fun MyApplication(modifier: Modifier = Modifier) {
 
             }
         }
+        PageIndicator(
+            pageCount = images.size,
+            currentPage = pagerState.currentPage,
+            modifier = modifier
+        )
     }
+}
+
+@Composable
+fun PageIndicator(pageCount: Int , currentPage: Int , modifier: Modifier) {
+
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+    ){
+        repeat(pageCount){
+            IndicatorDots(isSelected = it == currentPage,modifier=modifier)
+        }
+
+
+    }
+}
+
+@Composable
+fun IndicatorDots(isSelected: Boolean , modifier: Modifier) {
+val size = animateDpAsState(targetValue = if(isSelected) 15.dp else 10.dp,label="")
+    Box(modifier = modifier.padding(2.dp)
+        .size(size.value)
+        .clip(CircleShape)
+        .background(if (isSelected) Color(0xff3737373) else Color(0xff7B68EE))
+    )
 }
