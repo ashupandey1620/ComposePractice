@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -31,6 +33,16 @@ fun MyApplication(modifier: Modifier = Modifier) {
 
     val pagerState = rememberPagerState(pageCount = images.size)
 
+
+    LaunchedEffect(Unit){
+        while (true)
+        {
+            delay(2000)
+            val nextPage = (pagerState.currentPage+1) % pagerState.pageCount
+            pagerState.scrollToPage(nextPage)
+        }
+    }
+
     Column(modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -41,7 +53,9 @@ fun MyApplication(modifier: Modifier = Modifier) {
                     ) {currentPage->
 
                 Card(
-                    modifier.wrapContentSize().padding(26.dp),
+                    modifier
+                        .wrapContentSize()
+                        .padding(26.dp),
                     elevation = CardDefaults.cardElevation(8.dp)
 
                 ) {
