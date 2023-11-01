@@ -39,10 +39,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposePracticeTheme {
-
                 SpeakableText()
-
-
             }
         }
     }
