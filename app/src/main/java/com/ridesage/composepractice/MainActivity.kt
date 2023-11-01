@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePracticeTheme {
 
-                ColorContrast()
+                SpeakableText()
 
 
             }
