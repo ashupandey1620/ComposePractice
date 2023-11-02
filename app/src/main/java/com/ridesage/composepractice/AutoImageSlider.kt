@@ -106,8 +106,6 @@ fun MyApplication(modifier: Modifier = Modifier) {
                 Icon(imageVector = Icons.Filled.KeyboardArrowRight,contentDescription = "",
                     modifier.fillMaxSize(),
                     tint = Color.LightGray)
-
-
             }
 
             IconButton(onClick = { val prevPage = pagerState.currentPage+1
