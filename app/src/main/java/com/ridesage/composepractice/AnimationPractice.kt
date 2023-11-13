@@ -1,7 +1,9 @@
 package com.ridesage.composepractice
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -48,11 +50,16 @@ fun AnimationPractice() {
         }
 
         val borderRadius by animateIntAsState(
-            targetValue = if(isRound) 100 else 0,
-            animationSpec = tween(
-                durationMillis = 2000,
-                delayMillis = 500
+            targetValue = if(isRound) 40 else 20,
+//            animationSpec = tween(
+//                durationMillis = 2000,
+//                delayMillis = 500
+//            )
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioHighBouncy,
+                stiffness = Spring.StiffnessLow
             )
+
         )
 
 
