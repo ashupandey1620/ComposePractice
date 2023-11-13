@@ -2,9 +2,12 @@ package com.ridesage.composepractice
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateInt
 import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
@@ -65,34 +68,39 @@ fun AnimationPractice() {
 //
 //        )
 //
+//
+//        val transition = updateTransition(
+//            targetState = isRound,
+//            label = null)
+//
+//        val borderRadius by transition.animateInt(
+//            transitionSpec = { tween(2000) },
+//            label = "animate Int",
+//            targetValueByState = {isRound ->
+//                if (isRound) 100 else 0
+//            }
+//        )
+//
+//        val color by transition.animateColor(
+//            transitionSpec = { tween(2000) },
+//            label = "animate Color",
+//            targetValueByState = {isRound ->
+//                if (isRound) Color.Red else Color.Blue
+//            }
+//        )
 
-        val transition = updateTransition(
-            targetState = isRound,
-            label = null)
 
-        val borderRadius by transition.animateInt(
-            transitionSpec = { tween(2000) },
-            label = "animate Int",
-            targetValueByState = {isRound ->
-                if (isRound) 100 else 0
-            }
-        )
+        val transition = rememberInfiniteTransition()
 
-        val color by transition.animateColor(
-            transitionSpec = { tween(2000) },
-            label = "animate Color",
-            targetValueByState = {isRound ->
-                if (isRound) Color.Red else Color.Blue
-            }
-        )
-
-
+        val color by transition.animateColor(initialValue = Color.Green , targetValue = Color.LightGray , animationSpec = infiniteRepeatable(
+            animation = tween(2000),
+            repeatMode = RepeatMode.Reverse
+        ))
 
 
 
         Box (modifier = Modifier
             .size(200.dp)
-            .clip(RoundedCornerShape(borderRadius))
             .background(color)){
 
         }
