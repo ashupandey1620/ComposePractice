@@ -1,10 +1,13 @@
 package com.ridesage.composepractice
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateInt
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
@@ -49,23 +52,48 @@ fun AnimationPractice() {
             Text(text = "Toggle")
         }
 
-        val borderRadius by animateIntAsState(
-            targetValue = if(isRound) 40 else 20,
-//            animationSpec = tween(
-//                durationMillis = 2000,
-//                delayMillis = 500
+//        val borderRadius by animateIntAsState(
+//            targetValue = if(isRound) 40 else 20,
+////            animationSpec = tween(
+////                durationMillis = 2000,
+////                delayMillis = 500
+////            )
+//            animationSpec = spring(
+//                dampingRatio = Spring.DampingRatioHighBouncy,
+//                stiffness = Spring.StiffnessLow
 //            )
-            animationSpec = spring(
-                dampingRatio = Spring.DampingRatioHighBouncy,
-                stiffness = Spring.StiffnessLow
-            )
+//
+//        )
+//
 
+        val transition = updateTransition(
+            targetState = isRound,
+            label = null)
+
+        val borderRadius by transition.animateInt(
+            transitionSpec = { tween(2000) },
+            label = "animate Int",
+            targetValueByState = {isRound ->
+                if (isRound) 100 else 0
+            }
+        )
+
+        val color by transition.animateColor(
+            transitionSpec = { tween(2000) },
+            label = "animate Color",
+            targetValueByState = {isRound ->
+                if (isRound) Color.Red else Color.Blue
+            }
         )
 
 
-        Box (modifier = Modifier.size(200.dp)
+
+
+
+        Box (modifier = Modifier
+            .size(200.dp)
             .clip(RoundedCornerShape(borderRadius))
-            .background(Color.Red)){
+            .background(color)){
 
         }
 //        AnimatedVisibility(visible = isVisible,
