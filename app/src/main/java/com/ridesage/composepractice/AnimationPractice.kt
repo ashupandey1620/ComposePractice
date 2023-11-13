@@ -1,6 +1,8 @@
 package com.ridesage.composepractice
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
@@ -15,6 +17,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.with
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlin.reflect.KProperty
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimationPractice() {
 
@@ -90,20 +94,36 @@ fun AnimationPractice() {
 //        )
 
 
-        val transition = rememberInfiniteTransition()
+//        val transition = rememberInfiniteTransition()
+//
+//        val color by transition.animateColor(initialValue = Color.Green , targetValue = Color.LightGray , animationSpec = infiniteRepeatable(
+//            animation = tween(2000),
+//            repeatMode = RepeatMode.Reverse
+//        ))
 
-        val color by transition.animateColor(initialValue = Color.Green , targetValue = Color.LightGray , animationSpec = infiniteRepeatable(
-            animation = tween(2000),
-            repeatMode = RepeatMode.Reverse
-        ))
+        
+        AnimatedContent(
+            targetState = isVisible ,
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f) ,
+            content = { isVisible ->
+                if (isVisible)
+                    Box(modifier = Modifier.fillMaxSize().background(Color.Green))
+                else
+                    Box(modifier = Modifier.fillMaxSize().background(Color.Red))
+            } ,
+            transitionSpec = {
+                slideInHorizontally() with slideOutHorizontally()
+            } , label = ""
+        )
 
 
-
-        Box (modifier = Modifier
-            .size(200.dp)
-            .background(color)){
-
-        }
+//        Box (modifier = Modifier
+//            .size(200.dp)
+//            .background(color)){
+//
+//        }
 //        AnimatedVisibility(visible = isVisible,
 //            modifier = Modifier
 //                .fillMaxWidth()
