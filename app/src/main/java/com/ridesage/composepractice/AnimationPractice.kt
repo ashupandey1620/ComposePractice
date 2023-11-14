@@ -73,17 +73,17 @@ fun AnimationPractice() {
 //        )
 //
 //
-//        val transition = updateTransition(
-//            targetState = isRound,
-//            label = null)
-//
-//        val borderRadius by transition.animateInt(
-//            transitionSpec = { tween(2000) },
-//            label = "animate Int",
-//            targetValueByState = {isRound ->
-//                if (isRound) 100 else 0
-//            }
-//        )
+        val transition = updateTransition(
+            targetState = isRound,
+            label = null)
+
+        val borderRadius by transition.animateInt(
+            transitionSpec = { tween(2000) },
+            label = "animate Int",
+            targetValueByState = {isRound ->
+                if (isRound) 100 else 0
+            }
+        )
 //
 //        val color by transition.animateColor(
 //            transitionSpec = { tween(2000) },
